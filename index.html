@@ -669,6 +669,16 @@ right: 14px; bottom: 12px;
 .reveal .slides section#title-slide .quarto-title-author-name,
 .reveal .slides section#title-slide .quarto-title-affiliation { display: block; margin: 0; padding: 0; }
 .reveal .slides section#title-slide p.author, .reveal .slides section#title-slide p.institute { margin-left: 0; padding-left: 0; }
+
+.reveal .psig {
+font-weight: 700;
+color: var(--navy-dark);
+text-decoration: underline;
+text-decoration-color: var(--amber);
+text-decoration-thickness: 3px;
+text-underline-offset: 4px;
+}
+.reveal .tiny .psig { font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 2px; }
 </style>
   <style type="text/css">.reveal
 div.sourceCode
@@ -1466,7 +1476,7 @@ display:block!important;
 <li><strong>Fonte:</strong> questionário online (2022), pós-graduação em Nutrição da UFF</li>
 <li><strong>Amostra:</strong> 2.155 adultos, sem dados faltantes</li>
 <li><strong>Resposta:</strong> mudança no consumo de pães, torradas e biscoitos (4 categorias)</li>
-<li><strong>Explicativas:</strong> 15 qualitativas (sociodemográficas, econômicas, pandemia, saúde emocional) e 4 quantitativas (idade, peso, altura, IMC)</li>
+<li><strong>Explicativas:</strong> 15 qualitativas (<code>sociodemográficas</code>; <code>econômicas</code>e <code>pandemia e saúde emocional</code>) e 4 quantitativas (<code>idade</code>, <code>peso</code>, <code>altura</code>, <code>IMC</code>)</li>
 <li>Perfil: 74,3% mulheres; idade média de 34,8 anos; 45,2% com pós-graduação</li>
 </ul>
 </div><div class="column" style="width:52%;">
@@ -1498,16 +1508,16 @@ display:block!important;
 <h2>Metodologia estatística</h2>
 <p><strong>Variáveis qualitativas × resposta</strong></p>
 <ul>
-<li><strong>Qui-quadrado de independência</strong> (condição: observações independentes e frequências esperadas ≥ 5). Quando alguma esperada &lt; 5, <strong>Fisher com p-valor por simulação de Monte Carlo</strong> (100 mil réplicas).</li>
+<li><strong>Qui-quadrado de independência</strong> (condição: observações independentes e frequências esperadas ≥ 5). Quando alguma esperada &lt; 5, <strong>Fisher</strong>.</li>
 <li><strong>V de Cramér</strong>: intensidade da associação (0 = nenhuma; 1 = máxima).</li>
 <li><strong>Resíduos padronizados</strong>: caselas com |z| &gt; 1,96 são “influentes” (▲ acima do esperado, ▼ abaixo), interpretadas só se o teste for significativo.</li>
 </ul>
 <p><strong>Variáveis quantitativas × resposta (4 grupos)</strong></p>
 <ul>
 <li>Normalidade: gráficos e Shapiro-Wilk; com grupos grandes, usa-se o Teorema Central do Limite.</li>
-<li>Homocedasticidade: <strong>Levene</strong>. Variâncias iguais: <strong>ANOVA + Tukey</strong>; diferentes: <strong>ANOVA de Welch + Games-Howell</strong>. Kruskal-Wallis como checagem.</li>
+<li>Homocedasticidade: <strong>Levene</strong>. Variâncias iguais: <strong>ANOVA + Tukey</strong>; diferentes: <strong>ANOVA de Welch + Games-Howell</strong>.</li>
 </ul>
-<p><strong>Geral:</strong> nível de significância de <strong>5%</strong>; categorias raras agrupadas (gênero, raça/cor, escolaridade). Análises em <strong>R</strong> (<code>rstatix</code>, <code>kableExtra</code>, <code>ggplot2</code>, <code>gtsummary</code>).</p>
+<p><strong>Geral:</strong> nível de significância de <strong>5%</strong>; categorias raras agrupadas (gênero, raça/cor, escolaridade). Análises em <strong>R</strong> (<code>rstatix</code>, <code>kableExtra</code>, <code>ggplot2</code>).</p>
 <aside class="notes">
 <p>~1,5 min. Explicar o porquê: a resposta tem 4 categorias e uma delas é rara, então quase sempre há esperados &lt; 5, por isso Fisher com Monte Carlo.</p>
 <style type="text/css">
@@ -1569,7 +1579,7 @@ display:block!important;
 <td style="text-align: center;"><span style="font-weight: bold;    color: rgba(179, 38, 30, 1) !important;">715 (44,6%) ▲</span></td>
 <td style="text-align: center;">30 (1,9%)</td>
 <td rowspan="3" style="text-align: center; vertical-align: middle !important;">Fisher​</td>
-<td rowspan="3" style="text-align: center; vertical-align: middle !important;">&lt;0,001​</td>
+<td rowspan="3" style="text-align: center; vertical-align: middle !important;"><span class="psig">&lt;0,001​</span></td>
 <td rowspan="3" style="text-align: center; vertical-align: middle !important;">0,078​</td>
 </tr>
 <tr class="even">
@@ -1672,7 +1682,7 @@ display:block!important;
 </table>
 </div>
 </div>
-<p><span class="tiny">n (% por linha). ▲/▼: resíduo padronizado &gt; 1,96 em módulo (apenas em testes significativos). Fisher (Monte Carlo) usado quando alguma frequência esperada &lt; 5.</span></p>
+<p><span class="tiny">n (% por linha). ▲/▼: resíduo padronizado &gt; 1,96 em módulo (apenas em testes significativos). <span class="psig">p-valor sublinhado</span>: significativo (p &lt; 0,05). Fisher usado quando alguma frequência esperada &lt; 5.</span></p>
 <aside class="notes">
 <p>~1 min. Só gênero é significativo: mulheres aumentaram mais (44,6% vs 38,4%) e homens alteraram menos. Cuidado: o grupo “Outro/Não informado” tem só 11 pessoas.</p>
 <style type="text/css">
@@ -1736,7 +1746,7 @@ display:block!important;
 <td style="text-align: center;">108 (44,1%)</td>
 <td style="text-align: center;">8 (3,3%)</td>
 <td rowspan="3" style="text-align: center; vertical-align: middle !important;">Fisher​​</td>
-<td rowspan="3" style="text-align: center; vertical-align: middle !important;">&lt;0,001​​</td>
+<td rowspan="3" style="text-align: center; vertical-align: middle !important;"><span class="psig">&lt;0,001​​</span></td>
 <td rowspan="3" style="text-align: center; vertical-align: middle !important;">0,074​​</td>
 </tr>
 <tr class="even">
@@ -1800,7 +1810,7 @@ display:block!important;
 <td style="text-align: center;"><span style="font-weight: bold;    color: rgba(27, 94, 155, 1) !important;">721 (40,9%) ▼</span></td>
 <td style="text-align: center;">29 (1,6%)</td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">Qui-quadrado​​​​</td>
-<td rowspan="2" style="text-align: center; vertical-align: middle !important;">&lt;0,001​​​​</td>
+<td rowspan="2" style="text-align: center; vertical-align: middle !important;"><span class="psig">&lt;0,001​​​​</span></td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">0,148​​​​</td>
 </tr>
 <tr class="odd">
@@ -1815,7 +1825,7 @@ display:block!important;
 </table>
 </div>
 </div>
-<p><span class="tiny">n (% por linha). ▲/▼: resíduo padronizado &gt; 1,96 em módulo (apenas em testes significativos). NI = não informado.</span></p>
+<p><span class="tiny">n (% por linha). ▲/▼: resíduo padronizado &gt; 1,96 em módulo (apenas em testes significativos). <span class="psig">p-valor sublinhado</span>: significativo (p &lt; 0,05). NI = não informado.</span></p>
 <aside class="notes">
 <p>~1,5 min. Renda e dificuldade financeira: quem tem menos recursos mudou mais (diminuiu mais e “não alterou” menos). Dificuldade financeira tem o maior V (0,148). Escolaridade fica no limite (p≈0,06).</p>
 <style type="text/css">
@@ -1859,7 +1869,7 @@ display:block!important;
 <td style="text-align: center;"><span style="font-weight: bold;    color: rgba(27, 94, 155, 1) !important;">379 (39,8%) ▼</span></td>
 <td style="text-align: center;">15 (1,6%)</td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">Qui-quadrado​</td>
-<td rowspan="2" style="text-align: center; vertical-align: middle !important;">&lt;0,001​</td>
+<td rowspan="2" style="text-align: center; vertical-align: middle !important;"><span class="psig">&lt;0,001​</span></td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">0,087​</td>
 </tr>
 <tr class="even">
@@ -1899,7 +1909,7 @@ display:block!important;
 <td style="text-align: center;"><span style="font-weight: bold;    color: rgba(179, 38, 30, 1) !important;">791 (45,3%) ▲</span></td>
 <td style="text-align: center;"><span style="font-weight: bold;    color: rgba(27, 94, 155, 1) !important;">21 (1,2%) ▼</span></td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">Qui-quadrado​​​</td>
-<td rowspan="2" style="text-align: center; vertical-align: middle !important;">&lt;0,001​​​</td>
+<td rowspan="2" style="text-align: center; vertical-align: middle !important;"><span class="psig">&lt;0,001​​​</span></td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">0,138​​​</td>
 </tr>
 <tr class="even">
@@ -1939,7 +1949,7 @@ display:block!important;
 <td style="text-align: center;"><span style="font-weight: bold;    color: rgba(27, 94, 155, 1) !important;">413 (37,2%) ▼</span></td>
 <td style="text-align: center;">16 (1,4%)</td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">Qui-quadrado​​​​​</td>
-<td rowspan="2" style="text-align: center; vertical-align: middle !important;">&lt;0,001​​​​​</td>
+<td rowspan="2" style="text-align: center; vertical-align: middle !important;"><span class="psig">&lt;0,001​​​​​</span></td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">0,135​​​​​</td>
 </tr>
 <tr class="even">
@@ -1959,7 +1969,7 @@ display:block!important;
 <td style="text-align: center;"><span style="font-weight: bold;    color: rgba(27, 94, 155, 1) !important;">747 (41,4%) ▼</span></td>
 <td style="text-align: center;">31 (1,7%)</td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">Qui-quadrado​​​​​​</td>
-<td rowspan="2" style="text-align: center; vertical-align: middle !important;">&lt;0,001​​​​​​</td>
+<td rowspan="2" style="text-align: center; vertical-align: middle !important;"><span class="psig">&lt;0,001​​​​​​</span></td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">0,107​​​​​​</td>
 </tr>
 <tr class="even">
@@ -1979,7 +1989,7 @@ display:block!important;
 <td style="text-align: center;"><span style="font-weight: bold;    color: rgba(27, 94, 155, 1) !important;">779 (41,8%) ▼</span></td>
 <td style="text-align: center;">36 (1,9%)</td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">Qui-quadrado​​​​​​​</td>
-<td rowspan="2" style="text-align: center; vertical-align: middle !important;">&lt;0,001​​​​​​​</td>
+<td rowspan="2" style="text-align: center; vertical-align: middle !important;"><span class="psig">&lt;0,001​​​​​​​</span></td>
 <td rowspan="2" style="text-align: center; vertical-align: middle !important;">0,099​​​​​​​</td>
 </tr>
 <tr class="even">
@@ -2014,7 +2024,7 @@ display:block!important;
 </table>
 </div>
 </div>
-<p><span class="tiny">n (% por linha). ▲/▼: resíduo padronizado &gt; 1,96 em módulo (apenas em testes significativos).</span></p>
+<p><span class="tiny">n (% por linha). ▲/▼: resíduo padronizado &gt; 1,96 em módulo (apenas em testes significativos). <span class="psig">p-valor sublinhado</span>: significativo (p &lt; 0,05).</span></p>
 <aside class="notes">
 <p>~1,5 min. Ansiedade, depressão e insônia: quem relatou tem mais “aumentou” e menos “não alterou”. Consulta com nutricionista: mais “diminuiu” e “não consumo”, menos “aumentou”. COVID não é significativa com 4 categorias (p≈0,08).</p>
 <style type="text/css">
@@ -2074,9 +2084,9 @@ Média (desvio padrão) por mudança no consumo
 <td style="text-align: center;">34,3 (12,2)</td>
 <td style="text-align: center;">0,022</td>
 <td style="text-align: center;">ANOVA de Welch</td>
-<td style="text-align: center;">0,003</td>
-<td style="text-align: left; width: 17em;">Diminuiu &gt; Aumentou (p=0,020)<br>
-Não alterou &gt; Aumentou (p=0,007)</td>
+<td style="text-align: center;"><span class="psig">0,003</span></td>
+<td style="text-align: left; width: 17em;">Diminuiu &gt; Aumentou (p=<span class="psig">0,020</span>)<br>
+Não alterou &gt; Aumentou (p=<span class="psig">0,007</span>)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Peso</td>
@@ -2097,8 +2107,8 @@ Não alterou &gt; Aumentou (p=0,007)</td>
 <td style="text-align: center;">1,66 (0,08)</td>
 <td style="text-align: center;">0,277</td>
 <td style="text-align: center;">ANOVA</td>
-<td style="text-align: center;">0,021</td>
-<td style="text-align: left; width: 17em;">Não alterou &gt; Diminuiu (p=0,036)</td>
+<td style="text-align: center;"><span class="psig">0,021</span></td>
+<td style="text-align: left; width: 17em;">Não alterou &gt; Diminuiu (p=<span class="psig">0,036</span>)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">IMC</td>
@@ -2108,16 +2118,16 @@ Não alterou &gt; Aumentou (p=0,007)</td>
 <td style="text-align: center;">24,7 (4,3)</td>
 <td style="text-align: center;">0,031</td>
 <td style="text-align: center;">ANOVA de Welch</td>
-<td style="text-align: center;">0,003</td>
-<td style="text-align: left; width: 17em;">Aumentou &gt; Não alterou (p=0,002)</td>
+<td style="text-align: center;"><span class="psig">0,003</span></td>
+<td style="text-align: left; width: 17em;">Aumentou &gt; Não alterou (p=<span class="psig">0,002</span>)</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p><span class="tiny">Altura em metros. “A &gt; B”: a média de A é maior que a de B. Tukey quando Levene ≥ 0,05; Games-Howell quando &lt; 0,05. Kruskal-Wallis (checagem): Idade p=0,009; Peso p=0,071; Altura p=0,056; IMC p=0,001.</span></p>
+<p><span class="tiny">Altura em metros. “A &gt; B”: a média de A é maior que a de B. Tukey quando Levene ≥ 0,05; Games-Howell quando &lt; 0,05.</span></p>
 <aside class="notes">
-<p>~1,5 min. Idade e IMC são os resultados mais consistentes. Quem aumentou o consumo era mais jovem e tinha IMC maior que quem não alterou. Altura é frágil (Kruskal p≈0,056) e Peso não é significativo; as diferenças são pequenas.</p>
+<p>~1,5 min. Idade e IMC são os resultados mais consistentes. Quem aumentou o consumo era mais jovem e tinha IMC maior que quem não alterou. Altura é frágil (só uma comparação, p≈0,04) e Peso não é significativo; as diferenças são pequenas.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2159,7 +2169,6 @@ display:block!important;
 <section id="conclusão" class="slide level2">
 <h2>Conclusão</h2>
 <ul>
-<li><strong>Objetivo:</strong> avaliar a associação entre a mudança no consumo de pães, torradas e biscoitos e as demais variáveis.</li>
 <li><strong>43%</strong> aumentaram o consumo, <strong>42%</strong> não alteraram, <strong>13%</strong> diminuíram e <strong>2%</strong> não consomem.</li>
 <li><strong>Associadas (p &lt; 0,05):</strong> dificuldade financeira, consulta com nutricionista, ansiedade, depressão, insônia, isolamento social, gênero e renda; entre as quantitativas, <strong>idade</strong> e <strong>IMC</strong> (e, de forma frágil, altura).</li>
 <li><strong>Sem evidência:</strong> raça/cor, região, trabalho, tabagismo, enxaqueca e peso; escolaridade (p≈0,06) e COVID-19 (p≈0,08) ficaram no limite.</li>
